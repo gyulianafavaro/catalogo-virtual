@@ -23,6 +23,28 @@ function App() {
  
   }, [] );
 
+  function Excluir( evento, id){
+    evento.preventDefault();
+    fetch( process.env.REACT_APP_BACKEND + "filmes", {
+        method: "DELETE",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+              id: id
+            })
+    } )
+    .then( (resposta) => resposta.json() )
+    .then( ( json ) => {
+
+        const novaLista= filmes.filter( (filme) => filme._id !== id);
+            setFilmes( novaLista);
+    })
+    .catch( ( error ) => {  setErro( true ) } )
+    
+  }
+
+  
   return (
     <>
 
@@ -42,6 +64,8 @@ function App() {
               categoria={filme.categoria}
               ano={filme.ano}
               duracao={filme.duracao}
+              excluir={ (e) => Excluir ( e,filme._id ) }
+              id={filme._id}
            />
           
         ))

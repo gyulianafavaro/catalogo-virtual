@@ -8,7 +8,7 @@ function Cadastro() {
   const [ telefone, setTelefone ] = useState( "" );
   const [ cpf, setCpf ] = useState( "" );
   const [ senha, setSenha ] = useState( "" );
-  const [ cadastro, setCadstro ] = useState( false );
+  const [ cadastro, setCadastro ] = useState( false );
   const [ erro, setErro ] = useState( false );
 
   function Cadastrar( evento ) {
@@ -32,11 +32,11 @@ function Cadastro() {
     .then( (resposta) => resposta.json() )
     .then( ( json ) => {
       if( json.cpf ) {
-        setCadstro( true );
+        setCadastro( true );
         setErro( false );
       } else {
         setErro( true );
-        setCadstro( false );
+        setCadastro( false );
       }
     } )
     .catch( ( erro ) => { setErro( true ) } )

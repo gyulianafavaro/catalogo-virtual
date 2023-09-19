@@ -1,0 +1,17 @@
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    color:black;    
+}
+body{
+    color:black;
+}
+a:link{
+    text-decoration:none;
+    color:black;
+}
+a:active{
+    text-decoration:none;
+    color:black;
+}

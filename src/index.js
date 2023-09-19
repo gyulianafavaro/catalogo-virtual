@@ -7,21 +7,22 @@ import Login from './Login';
 import Cadastro from "./Cadastro";
 import Filmes from './Filmes';
 import EditaFilme from './EditaFilme';
+import "./app.css";
 
 
 const theme = createTheme({
   palette: {
     mode: 'light',
     primary: {
-      main: '#C012E3',
-      light: '#C012E3',
-      dark: '#D075FF',
+      main: '#CBCBCB',
+      light: '#BD0A0A',
+      dark: '#BD0A0A',
       contrastText: '#FEFFF6',
     },
     secondary: {
       main: '#FEFFF6',
-      light: '#ba8aff',
-      dark: '#6620c5',
+      light: '#BD0A0A',
+      dark: '#BD0A0A',
     },
     text: {
       primary: '#757575',

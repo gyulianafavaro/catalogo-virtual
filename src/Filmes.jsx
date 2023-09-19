@@ -1,5 +1,7 @@
 import { Box, Container, TextField, Button, Typography, Alert} from '@mui/material';
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import MenuResponsivo from './components/MenuResponsivo';
+
 
 function Filmes() {
 
@@ -46,6 +48,8 @@ function Filmes() {
       
     }
   return (
+    <>
+    <MenuResponsivo></MenuResponsivo>
     <Container component="section" maxWidth="sm">
         <Box sx={{ 
             mt: 10,
@@ -124,6 +128,7 @@ function Filmes() {
             </Box>
         </Box>
     </Container>
+    </>
   )
 }
 

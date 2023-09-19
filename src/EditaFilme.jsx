@@ -1,6 +1,7 @@
 import { Alert, Box, Button, Container, TextField, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import MenuResponsivo from './components/MenuResponsivo';
 
 function EditaFilme() {
 
@@ -75,6 +76,8 @@ function EditaFilme() {
 
 
     return (
+        <>
+        <MenuResponsivo></MenuResponsivo>
         <Container component="section" maxWidth="sm">
             <Box sx={{
                 mt: 5,
@@ -147,6 +150,7 @@ function EditaFilme() {
                 </Box>
             </Box>
         </Container>
+        </>
     )
 }
 

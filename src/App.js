@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Filme from "./components/Filme";
 import { Container } from "@mui/material";
-import Menu from "@mui/material";
+import MenuResponsivo from "./components/MenuResponsivo";
 
 
 
@@ -47,8 +47,8 @@ function App() {
   
   return (
     <>
-
-      <h1>Filmes</h1>
+        <MenuResponsivo/>
+      <h1></h1>
       <Container sx={{
         display: "flex" ,
         flexFlow: "row" ,

@@ -15,7 +15,7 @@ function Cadastro() {
   function Cadastrar( evento ) {
 
     evento.preventDefault();
-    fetch( process.env.REACT_APP_BACKEND + "users", {
+    fetch( process.env.REACT_APP_BACKEND + "usuarios", {
         method: "POST",
         headers: {
             'Content-Type': 'application/json'
@@ -61,7 +61,7 @@ function Cadastro() {
     <Container component="section" maxWidth="sm">
         <Box sx={{ 
             mt: 10,
-            backgroundColor: "#EDEDED",
+            backgroundColor: "#D9D9D9",
             padding: "30px",
             borderRadius: "10px",
             display: "flex",

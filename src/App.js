@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import Filme from "./components/Filme";
 import { Container } from "@mui/material";
 import MenuResponsivo from "./components/MenuResponsivo";
-
+import Titulo from "./components/Titulo";
+import Style from "./components/global.module.css"
 
 
 function App() {
@@ -10,9 +11,11 @@ function App() {
   const[ filmes, setFilmes ] = useState();
   const[ erro, setErro ] = useState(false);
 
-
   useEffect( () => {
-    fetch( process.env.REACT_APP_BACKEND + "filmes", {
+    
+    const teste = localStorage.getItem("usuario");
+
+    fetch( process.env.REACT_APP_BACKEND + "produtos/" + teste , {
       headers: {
         "Content-Type": "application/json"
       }
@@ -25,13 +28,14 @@ function App() {
 
   function Excluir( evento, id){
     evento.preventDefault();
-    fetch( process.env.REACT_APP_BACKEND + "filmes", {
+    fetch( process.env.REACT_APP_BACKEND + "produtos", {
         method: "DELETE",
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-              id: id
+              id: id,
+              usuario:localStorage.getItem("usuario")
             })
     } )
     .then( (resposta) => resposta.json() )
@@ -48,20 +52,22 @@ function App() {
   return (
     <>
         <MenuResponsivo/>
-      <h1></h1>
+      <Titulo></Titulo>
+
+
       <Container sx={{
         display: "flex" ,
         flexFlow: "row" ,
         flexWrap: "wrap",
+        mt:10,
         gap:"2rem"
      }}>
       { filmes && (
           filmes.map( (filme, index) => (
             <Filme
-              imagem={filme.imagem}
+              trailler={filme.imagem}
               titulo={filme.titulo}
               descricao={filme.descricao}
-              categoria={filme.categoria}
               ano={filme.ano}
               duracao={filme.duracao}
               excluir={ (e) => Excluir ( e,filme._id ) }

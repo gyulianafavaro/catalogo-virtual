@@ -12,11 +12,12 @@ function EditaFilme() {
     const [duracao, setDuracao] = useState("");
     const [categoria, setCategoria] = useState("");
     const [imagem, setImagem] = useState("");
-    const [editar, setEditar] = useState("");
+    const [editar, setEditar] = useState(false);
     const [erro, setErro] = useState(false);
 
     useEffect(() => {
-        fetch(process.env.REACT_APP_BACKEND + "filmes/" + id, {
+        const usuario = localStorage.getItem( "usuario" );
+        fetch(process.env.REACT_APP_BACKEND + "produtos/"+ usuario + "/" + id, {
             method: "GET",
             headers: {
                 'Content-Type': 'application/json'
@@ -30,7 +31,7 @@ function EditaFilme() {
                     setDescricao(json.descricao);
                     setAno(json.ano);
                     setDuracao(json.duracao);
-                    setCategoria(json.categoria);
+                    
                     setImagem(json.imagem);
                 } else {
                     setErro("Filme não encontrado");
@@ -42,7 +43,7 @@ function EditaFilme() {
 
     function Editar(evento) {
         evento.preventDefault();
-        fetch(process.env.REACT_APP_BACKEND + "filmes", {
+        fetch(process.env.REACT_APP_BACKEND + "produtos", {
             method: "PUT",
             headers: {
                 'Content-Type': 'application/json'
@@ -54,8 +55,9 @@ function EditaFilme() {
                     descricao: descricao,
                     ano: ano,
                     duracao: duracao,
-                    categoria: categoria,
-                    imagem: imagem
+                    imagem: imagem,
+                    categoria: "",
+                    usuario: localStorage.getItem( "usuario" )
                 }
             )
         })
@@ -81,7 +83,7 @@ function EditaFilme() {
         <Container component="section" maxWidth="sm">
             <Box sx={{
                 mt: 5,
-                background: "#dce0e6",
+                background: "#CBCBCB",
                 padding: "30px",
                 borderRadius: "10px",
                 display: "flex",
@@ -111,7 +113,7 @@ function EditaFilme() {
                         fullWidth
                     />
                     <TextField
-                        type="number"
+                        type="text"
                         label="Ano"
                         variant="filled"
                         margin="normal"
@@ -128,15 +130,7 @@ function EditaFilme() {
                         onChange={(e) => setDuracao(e.target.value)}
                         fullWidth
                     />
-                    <TextField
-                        type="text"
-                        label="Categoria"
-                        variant="filled"
-                        margin="normal"
-                        value={categoria}
-                        onChange={(e) => setCategoria(e.target.value)}
-                        fullWidth
-                    />
+                    
                     <TextField
                         type="text"
                         label="Url da imagem"
@@ -146,7 +140,7 @@ function EditaFilme() {
                         onChange={(e) => setImagem(e.target.value)}
                         fullWidth
                     />
-                    <Button type="submit" variant="contained" size="large" fullWidth sx={{ mt: 2, mb: 2 }}>Editar</Button>
+                    <Button type="submit" variant="contained" size="large" fullWidth sx={{ mt: 2, mb: 2 }} >Editar</Button>
                 </Box>
             </Box>
         </Container>

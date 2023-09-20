@@ -25,17 +25,17 @@ const theme = createTheme({
       dark: '#BD0A0A',
     },
     text: {
-      primary: '#757575',
-      secondary: '#9e9e9e',
+      primary: '#BD0A0A',
+      secondary: '#000',
       hint: '#ffb74d',
-      disabled: '#bdbdbd',
+      disabled: '#BD0A0A',
     },
     error: {
       main: '#d50000',
       contrastText: '#ffffff',
     },
     background: {
-      default: '#a4a4a4',
+      default: '#BD0A0A',
     },
     warning: {
       main: '#ffc80d',

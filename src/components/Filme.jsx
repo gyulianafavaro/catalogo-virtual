@@ -6,12 +6,7 @@ function Filme(props){
     return (
         <Card sx={{ maxWidth: 345 }}>
             <CardActionArea>
-                <CardMedia
-                    component="img"
-                    height="140"
-                    image={props.imagem}
-                    alt={props.titulo}
-                    />
+                <iframe width="100%" height="315" src={ "https://www.youtube.com/embed/" + props.trailler } title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 <CardContent>
                     <Typography variant="h5" component="div">
                         {props.titulo}
@@ -20,13 +15,10 @@ function Filme(props){
                         {props.descricao}
                     </Typography>
                     <Grid container>
-                    <Grid item xs={2}>
-                        <span>{props.categoria}</span>
-                    </Grid>
-                    <Grid item xs={2}>
+                    <Grid item xs={2} ml={5}>
                         <span>{props.ano}</span>
                     </Grid>
-                    <Grid item xs={2}>
+                    <Grid item xs={2} ml={9}>
                         <span>{props.duracao}</span>
                     </Grid>
                     </Grid>

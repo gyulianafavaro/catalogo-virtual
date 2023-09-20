@@ -17,7 +17,7 @@ function Filmes() {
     function Cadastrar( evento )
     {
       evento.preventDefault();
-      fetch( process.env.REACT_APP_BACKEND + "filmes", {
+      fetch( process.env.REACT_APP_BACKEND + "produtos", {
           method: "POST",
           headers: {
               'Content-Type': 'application/json'
@@ -28,8 +28,9 @@ function Filmes() {
                   descricao: descricao,
                   ano:ano,
                   duracao:duracao,
-                  categoria:categoria,
-                  imagem:imagem
+                  imagem:imagem,
+                  categoria:"",
+                  usuario: localStorage.getItem( "usuario" )
               }
           )
       } )
@@ -85,7 +86,7 @@ function Filmes() {
                     required
                 />
                 <TextField
-                    type="number"
+                    type="text"
                     label="Ano" 
                     variant="filled" 
                     margin="normal"
@@ -104,16 +105,7 @@ function Filmes() {
                     fullWidth
                     required
                 />
-                <TextField
-                    type="text"
-                    label="Categoria" 
-                    variant="filled" 
-                    margin="normal"
-                    value={categoria}
-                    onChange={ (e) => setCategoria( e.target.value ) }
-                    fullWidth
-                    required
-                />
+                
                 <TextField
                     type="text"
                     label="Url da Imagem" 
